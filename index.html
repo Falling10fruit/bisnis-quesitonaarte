@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="hello.css">
+    </head>
+    <body>
+        <div id="progress">
+            <div id="select_progress"></div>
+
+            <div class="progress_item depth">Hello</div>
+            <div class="progress_item depth">Stuff
+                <div class="secret_progress"></div> <!-- would you buy for 200k -->
+                <div class="secret_progress"></div> <!-- black, yellow, or white -->
+                <div class="secret_progress"></div> <!-- What do you expect from a calculator -->
+                <div class="secret_progress"></div> <!-- does this ad work-->
+                <div class="secret_progress"></div> <!-- Do you like this video better? -->
+            </div>
+
+            <div class="progress_item depth">Thanks</div>
+        </div>
+
+        <main>
+            <div id="title">
+                <div class="title_text active_title" id="title_hello">
+                    <h2>Hi, This Is a</h2>
+                    <h1>Calcis</h1></div>
+                <div class="title_text" id="title_ubroke" >u broke?</div>
+            </div>
+
+            <section id="hello" class="main_section">
+                <h2>Hi, This Is a</h2>
+                <h1 style="visibility: hidden; font-size: min(20vh, 20vw);">Calcis</h1>
+                <h2>Questionare</h2>
+
+                <label for="name">What is your name?</label>
+                <input type="text" name="name" class="depth" id="name">
+
+                <p class="warning" id="name_Warn">at least put something in there</p>
+
+                <button class="next">fucking move on bithc</button>
+            </section>
+
+            <section id="ubroke" class="main_section">
+                <h1 style="visibility: hidden; font-size: min(20vh, 20vw);">u broke?</h1>
+                <h2>Would you buy this calculator for 200.000 R.p. ?</h2>
+
+                <div id="calc_card">
+                    <div>Click to Reveal</div>
+                    <figure>
+                        <img>
+
+                        <figcaption></figcaption>
+                    </figure>
+                </div>
+
+                <button class="next">Next</button>
+            </section>
+        </main>
+
+        <script defer src="index.js"></script>
+    </body>
+</html>
