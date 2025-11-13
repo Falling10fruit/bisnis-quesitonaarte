@@ -34,7 +34,7 @@ const main = document.getElementById("main");
 const name_input = document.getElementById("name")
 const name_warn = document.getElementById("name_Warn")
 document.getElementById("next_hello").onclick = hello_next;
-// hello_next();
+hello_next();
 function hello_next () {
 
     console.log(name_input.value.length)
@@ -66,4 +66,8 @@ function hello_next () {
     title.style.padding = ""
 
     main.style.left = "-100vw";
+}
+
+document.getElementById("calc_card").onclick = () => {
+    document.getElementById("calc_card_inner").style.transform = "rotateY(180deg)"
 }
