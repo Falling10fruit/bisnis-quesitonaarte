@@ -61,6 +61,7 @@
 #calc_card_inner figure {
     margin: 0px;
     transform: rotateY(180deg);
+    overflow: hidden;
 }
 
 #calc_card_inner figure img {
