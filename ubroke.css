@@ -1,0 +1,29 @@
+#ubroke {
+    padding: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#title_ubroke {
+    padding: 5vw;
+}
+
+#ubroke label {
+    margin-top: 5vh;
+}
+
+#ubroke input {
+    height: 40px;
+    margin: 10px;
+
+    border-radius: 40px;
+    padding: 10px;
+}
+
+#ubroke .next { margin-top: 5vh; }
+
+#calc_card {
+    width: 70vw;
+    aspect-ratio: 3/4;
+}

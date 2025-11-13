@@ -27,22 +27,32 @@ input {
   -moz-appearance: none;    /* Firefox */
 }
 
+html {
+    overflow: hidden;
+}
+
 
 body {
     margin: 0px;
-    height: 100vh;
+    max-height: 100vh;
+    max-width: 100vw;
     background-color: var(--back);
+    overflow: hidden;
 }
 
 main {
+    position: relative;
     display: flex;
     overflow: hidden;
     min-width: none;
     width: 800vw;
+    transition: 0.5s;
+    left: 0px;
 }
 
 .main_section {
     width: 100vw;
+    overflow: hidden;
 }
 
 .depth {
@@ -58,9 +68,12 @@ main {
     gap: 25px;
     height: 20vh;
     align-items: center;
+    padding: 0vw;
+    transition: 0.5s;
 }
 
 .progress_item {
+    position: relative;
     background-color: var(--mid);
     height: 45%;
     aspect-ratio: 1/1;
@@ -69,6 +82,7 @@ main {
     justify-content: center;
     align-items: center;
     z-index: 4;
+    transition: 0.5s;
 }
 
 #select_progress {
@@ -91,11 +105,18 @@ h1, h2, p {
     position: absolute;
     width: 100vw;
     transition: 0.5s;
-    color: var(--strong)
+    color: var(--strong);
+    left: 0vw;
 }
 
 #title h1{ font-size: min(20vh, 20vw); }
-.title_text h2{ display: hidden;}
+.title_offset{
+    visibility: hidden;
+    overflow: hidden;
+    transition: 0.5s;
+    max-height: 300px;
+    max-width: 3000px;
+}
 
 .title_text {
     position: absolute;
@@ -105,9 +126,12 @@ h1, h2, p {
 .active_title { filter: opacity(1); }
 
 #title_hello {
-    padding: 5vw;
     width: 100%;
     text-align: center;
+}
+
+#title_hello_offset {
+    margin-bottom: 5vw;
 }
 
 .next {

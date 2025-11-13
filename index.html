@@ -3,31 +3,36 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="secret_progress.css">
         <link rel="stylesheet" href="hello.css">
+        <link rel="stylesheet" href="ubroke.css">
     </head>
     <body>
         <div id="progress">
             <div id="select_progress"></div>
 
             <div class="progress_item depth">Hello</div>
-            <div class="progress_item depth">Stuff
-                <div class="secret_progress"></div> <!-- would you buy for 200k -->
-                <div class="secret_progress"></div> <!-- black, yellow, or white -->
-                <div class="secret_progress"></div> <!-- What do you expect from a calculator -->
-                <div class="secret_progress"></div> <!-- does this ad work-->
-                <div class="secret_progress"></div> <!-- Do you like this video better? -->
+            <div class="progress_item" style="background-color: none;" id="secret_item">
+                <div id="veil" class="depth" style="position: absolute; flex: 1">Stuff</div>
+                
+                <div class="secret_progress depth">1</div> <!-- would you buy for 200k -->
+                <div class="secret_progress depth">1</div> <!-- black, yellow, or white -->
+                <div class="secret_progress depth">1</div> <!-- What do you expect from a calculator -->
+                <div class="secret_progress depth">1</div> <!-- does this ad work-->
+                <div class="secret_progress depth">1</div> <!-- Do you like this video better? -->
             </div>
 
             <div class="progress_item depth">Thanks</div>
         </div>
 
-        <main>
+        <main id="main">
             <div id="title">
-                <div class="title_text active_title" > <h2>Hi, This Is a</h2></div>
-                <h1 class="title_text" id="title_hello">Calcis</h1>
-
-                <div></div>
-                <h1 class="title_text" id="title_ubroke" >u broke?</h1>
+                <div id="title_hello_offset" class="title_offset"><h2>Hi, This Is a</h2></div>
+                
+                <div style="position: relative">
+                    <h1 class="title_text active_title" id="title_hello">Calcis</h1>
+                    <h1 class="title_text" id="title_ubroke" >u broke?</h1>
+                </div>
             </div>
 
             <section id="hello" class="main_section">
@@ -36,11 +41,11 @@
                 <h2>Questionare</h2>
 
                 <label for="name">What is your name?</label>
-                <input type="text" name="name" class="depth" id="name">
+                <input type="text" name="name" class="depth" id="name" value = "Johnny">
 
                 <p class="warning" id="name_Warn">at least put something in there</p>
 
-                <button class="next" onclick="hello_next()">fucking move on bithc</button>
+                <button class="next" id="next_hello">fucking move on bithc</button>
             </section>
 
             <section id="ubroke" class="main_section">
