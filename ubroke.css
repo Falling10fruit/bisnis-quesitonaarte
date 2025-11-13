@@ -1,13 +1,13 @@
 #ubroke {
-    padding: 5vw;
+    padding: 10vw;
+    padding-top: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#title_ubroke {
-    padding: 5vw;
-}
+#title_ubroke { padding: 10vw; padding-top: 0px;}
+#title.ubroke h1{ font-size: min(15vh, 15vw); }
 
 #ubroke label {
     margin-top: 5vh;
@@ -21,13 +21,11 @@
     padding: 10px;
 }
 
-#ubroke .next { margin-top: 5vh; }
-
 #calc_card {
     perspective: 1000px;
     margin-top: 5vw;
     width: 60vw;
-    aspect-ratio: 3/4;
+    aspect-ratio: 5/6;
 }
 
 #calc_card_inner {
@@ -66,6 +64,47 @@
 
 #calc_card_inner figure img {
     width: 100%;
-    aspect-ratio: 1080/1350;
+    height: 100%;
     object-fit: cover;
+}
+
+#ubroke_button_container {
+    overflow: hidden;
+    transition: 0.5s;
+    max-height: 0px;
+    margin-top: 5vw;
+    background-color: var(--front);
+    border-radius: 10px;
+    transition: 0.2s;
+    
+    display: flex;
+    gap: 3vw;
+}
+
+#ubroke_button_container button {
+    margin: 1vh;
+    background-color: var(--darkshadow);
+    border-radius: 10px;
+    border: none;
+    padding: 20px;
+    
+    transition: 0.2s;
+}
+
+#ubroke_button_container button:nth-child(2n + 1) { background-color: var(--mid); }
+
+#ubroke_button_container.wrong { background-color: rgb(150, 0, 0);}
+#ubroke_button_container.wrong button { color: var(--back); }
+#ubroke_button_container.wrong button:nth-child(2n + 1) { background-color: rgb(100, 0, 0); }
+#ubroke_button_container.wrong button:nth-child(2n) { background-color: rgb(200, 0, 0); }
+
+#next_ubroke {
+    transition: 0.5s;
+    max-height: 0px;
+    padding: 0px;
+    margin-top: 0px;
+    overflow: hidden;
+    
+    /* padding: 20px;
+    margin-top: 10px; */
 }

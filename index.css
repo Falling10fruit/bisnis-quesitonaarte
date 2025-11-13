@@ -94,7 +94,7 @@ main {
     z-index: 3;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    transition: 0.5s cubic-bezier(.47,1.64,.41,.8);
+    transition: 0.3s cubic-bezier(.47,1.64,.41,.8);
 }
 
 h1, h2, p {
@@ -107,6 +107,7 @@ h1, h2, p {
     transition: 0.5s;
     color: var(--strong);
     left: 0vw;
+    pointer-events: none;
 }
 
 #title h1{ font-size: min(20vh, 20vw); }
@@ -142,7 +143,7 @@ h1, h2, p {
 }
 
 .warning {
-    height: 0px;
+    max-height: 0px;
     color: red;
     overflow: hidden;
     transition: 0.5s;

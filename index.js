@@ -20,8 +20,8 @@ function tick() {
         select_progress.style.left = `${mid_x - select_progress.clientWidth/2}px`;
     }
     
-    if (current_page == pages.UBROKE) {
-        const hello_item = progress_items[1].children[current_page - 1];
+    if (current_page > 0) {
+        const hello_item = progress_items[1].children[current_page];
         const mid_x = hello_item.getBoundingClientRect().x + hello_item.clientWidth/2;
         select_progress.style.left = `${mid_x - select_progress.clientWidth/2}px`;
     }
@@ -34,23 +34,20 @@ const main = document.getElementById("main");
 const name_input = document.getElementById("name")
 const name_warn = document.getElementById("name_Warn")
 document.getElementById("next_hello").onclick = hello_next;
-hello_next();
+hello_next()
 function hello_next () {
-
-    console.log(name_input.value.length)
-
     if (name_input.value.length == 0) {
         name_warn.innerText = "At least put something in there"
-        name_warn.style.height = "21px";
+        name_warn.style.maxHeight = "21px";
         return
     }
-
-    console.log(title_texts[current_page]);
 
     title_texts[current_page].classList.remove("active_title")
     current_page++
     title_texts[current_page].classList.add("active_title")
+    
     title.style.left = "100vw";
+    title.classList.add("ubroke");
 
     const title_hello_offset = document.getElementById("title_hello_offset");
     title_hello_offset.style.maxHeight = "0px";
@@ -60,6 +57,10 @@ function hello_next () {
     
     document.getElementById("veil").style.filter =  "opacity(0)";
 
+    const height = window.innerHeight * 0.12 + 5;
+    select_progress.style.height = `${height}px`;
+    select_progress.style.width = "30px";
+
     document.getElementById("progress").style.padding = "5vw";
     
     title.style.fontSize = "min(10vh, 10vw)";
@@ -68,6 +69,44 @@ function hello_next () {
     main.style.left = "-100vw";
 }
 
+
 document.getElementById("calc_card").onclick = () => {
     document.getElementById("calc_card_inner").style.transform = "rotateY(180deg)"
+    document.getElementById("ubroke_button_container").style.maxHeight = "100px";
+
+    document.getElementById("next_ubroke").style.padding = "20px";
+    document.getElementById("next_ubroke").style.marginTop = "10px";
+    document.getElementById("next_ubroke").style.maxHeight = "100px";
+}
+
+let is_correct = true;
+const ubroke_button_container = document.getElementById("ubroke_button_container")
+ubroke_button_container.onclick = () => {
+    is_correct = !is_correct;
+    ubroke_button_container.classList.toggle("wrong")
+}
+
+const next_ubroke = document.getElementById("next_ubroke")
+const ubroke_warn = document.getElementById("poster_warn");
+next_ubroke.onclick = () => {
+    if (is_correct) {
+        progress_from_ubroke()
+        return
+    }
+
+    ubroke_warn.style.maxHeight = "100px"
+    next_ubroke.onclick = fucku()
+}
+
+function fucku () {
+    ubroke_warn.innerText = "screw you"
+    setTimeout(progress_from_ubroke, 500);
+}
+
+function progress_from_ubroke () {
+    title_texts[current_page].classList.remove("active_title")
+    current_page++
+    title_texts[current_page].classList.add("active_title")
+
+    main.style.left = "-100vw";
 }
