@@ -31,10 +31,10 @@ function tick() {
 
 const main = document.getElementById("main");
 
+
 const name_input = document.getElementById("name")
 const name_warn = document.getElementById("name_Warn")
 document.getElementById("next_hello").onclick = hello_next;
-hello_next()
 function hello_next () {
     if (name_input.value.length == 0) {
         name_warn.innerText = "At least put something in there"
@@ -53,10 +53,13 @@ function hello_next () {
     title_hello_offset.style.maxHeight = "0px";
     title_hello_offset.style.margin = "0vh";
 
+    // REVERT THIS WHEN YOU SAY THANK YOU
     progress_items[1].classList.add("secret_revealed");
     
+    // REVERT THIS WHEN YOU SAY THANK YOU
     document.getElementById("veil").style.filter =  "opacity(0)";
 
+    // REVERT THIS WHEN YOU SAY THANK YOU
     const height = window.innerHeight * 0.12 + 5;
     select_progress.style.height = `${height}px`;
     select_progress.style.width = "30px";
@@ -95,7 +98,9 @@ next_ubroke.onclick = () => {
     }
 
     ubroke_warn.style.maxHeight = "100px"
-    next_ubroke.onclick = fucku()
+    next_ubroke.onclick = () => {}
+
+    setTimeout(fucku, 1000);
 }
 
 function fucku () {
@@ -107,6 +112,12 @@ function progress_from_ubroke () {
     title_texts[current_page].classList.remove("active_title")
     current_page++
     title_texts[current_page].classList.add("active_title")
+    title.classList.remove("ubroke");
+    title.classList.add("taste");
 
-    main.style.left = "-100vw";
+    title.style.left = "200vw";
+    main.style.left = "-200vw";
 }
+
+hello_next()
+progress_from_ubroke()
