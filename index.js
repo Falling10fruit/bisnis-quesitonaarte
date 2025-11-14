@@ -183,6 +183,3 @@ function swtich_taste() {
 function taste_next () {
     
 }
-
-hello_next()
-progress_from_ubroke()
