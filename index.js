@@ -196,5 +196,35 @@ function taste_next () {
     main.style.left = "-300vw";
 }
 
+const wanted_functions = {
+    constants: false,
+    graphing: false,
+    integrals: false,
+    regression: false,
+    sigma: false,
+    turing: false
+}
+const func_grid_children = document.getElementById("func_grid").children;
+for (let i = 0; i < func_grid_children.length; i++) { func_grid_children[i].onclick = handle_func_click; }
+let wanted_count = 0;
+const func_next = document.getElementById("func_next");
+function handle_func_click () {
+    this.classList.toggle("active");
+    wanted_functions[this.id] = !wanted_functions[this.id];
+
+    if (this.classList.contains("active")) {
+        wanted_count++
+    } else {
+        wanted_count--
+    }
+
+    if (wanted_count == 0) {
+        func_next.innerText = "I don't need anything";
+    } else {
+        func_next.innerText = "This please";
+    }
+}
+
 hello_next()
 progress_from_ubroke()
+taste_next()
