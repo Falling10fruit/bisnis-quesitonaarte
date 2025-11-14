@@ -4,42 +4,53 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 #title_taste { padding: 10vw; padding-top: 0px;}
 #title.taste h1{ font-size: min(15vh, 15vw); text-align: center;}
 
 #carousel_of_taste {
-    width: 100%
+    position: relative;
+    width: 100%;
+    height: 105vw;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #carousel_inner {
-    display: relative;
-    left: -100vw;
+    height: 100%;
+    position: absolute;
+    z-index: 5;
+    transition: 0.2s;
     
     display: flex;
-    gap: 10vw;
-    animation: panagonia 1s;
-}
-
-@keyframes panagonia {
-    0% {
-        left: 0vw;
-    }
-    100% {
-        left: -240vw;
-    }
+    justify-content: space-between;
+    align-items: center;
 }
 
 #carousel_inner figure {
     display: inline;
-    width: 70vw;
+    width: 80vw;
+    height: 100%;
     margin: 0px;
-    aspect-ratio: 2/3;
     text-align: center;
 }
 
 #carousel_inner figure img {
     height: 100%;
-    object-fit: cover;
+    width: 100%;
+    object-fit: contain;
+}
+
+.carousel_buttons {
+    background-color: rgba(240, 240, 240, 0.5);
+    border: none;
+    outline: none;
+    width: 10vw;
+    aspect-ratio: 1/1;
+    border-radius: 10vw;
+    z-index: 6;
 }

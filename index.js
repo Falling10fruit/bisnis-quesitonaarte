@@ -1,6 +1,7 @@
 const pages = {
     HELLO: 0,
-    UBROKE: 1
+    UBROKE: 1,
+    TASTE: 2
 }
 
 let current_page = pages.HELLO;
@@ -10,6 +11,32 @@ select_progress.style.left = "0px";
 const progress_items = document.getElementsByClassName("progress_item");
 const title_texts = document.getElementsByClassName("title_text");
 const title = document.getElementById("title");
+
+const carousel_inner = document.getElementById("carousel_inner");
+let carousel_taste = 1;
+
+const mouse = {x: 0, y: 0, down: false, past_x: 0, past_y: 0, offset_x: 0, offset_y: 0, past_offset_x: 0, past_offset_y: 0}
+window.onmousemove = (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+
+    console.log(mouse.down)
+
+    if (mouse.down) {
+        mouse.offset_x = mouse.x - mouse.past_x;
+        mouse.offset_y = mouse.y - mouse.past_y;
+    }
+}
+window.onmousedown = () => {
+    mouse.down = true;
+    mouse.past_x = mouse.x;
+    mouse.past_y = mouse.y;
+}
+window.onmouseup = () => {
+    mouse.down = false;
+    mouse.past_offset_x = mouse.offset_x;
+    mouse.past_offset_y = mouse.offset_y;
+}
 
 tick()
 
@@ -24,6 +51,15 @@ function tick() {
         const hello_item = progress_items[1].children[current_page];
         const mid_x = hello_item.getBoundingClientRect().x + hello_item.clientWidth/2;
         select_progress.style.left = `${mid_x - select_progress.clientWidth/2}px`;
+    }
+
+    if (current_page == pages.TASTE) {
+        const carousel_space = window.innerWidth*0.8
+
+        const total_offset = mouse.offset_x + mouse.past_offset_x;
+        
+
+        carousel_inner.style.left = `-${carousel_space * carousel_taste}px`;
     }
 
     requestAnimationFrame(tick)
@@ -117,6 +153,35 @@ function progress_from_ubroke () {
 
     title.style.left = "200vw";
     main.style.left = "-200vw";
+}
+
+document.getElementById("carousel_left").onclick = () => {
+    carousel_taste = (carousel_taste + 2)%3
+    swtich_taste()
+}
+document.getElementById("carousel_right").onclick = () => {
+    carousel_taste = (carousel_taste + 1)%3;
+    swtich_taste()
+}
+const tate_next = document.getElementById("taste_next");
+function swtich_taste() {
+    console.log(carousel_taste)
+
+    switch (carousel_taste) {
+        case 0:
+            tate_next.innerText = "Black"
+            break;
+        case 1:
+            tate_next.innerText = "Yellow!"
+            break;
+        case 2:
+            tate_next.innerText = "White"
+            break;
+    }
+}
+
+function taste_next () {
+    
 }
 
 hello_next()

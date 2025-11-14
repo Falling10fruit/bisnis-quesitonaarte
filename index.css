@@ -148,3 +148,7 @@ h1, h2, p {
     overflow: hidden;
     transition: 0.5s;
 }
+
+#taste_next {
+    margin-top: 20px;
+}
