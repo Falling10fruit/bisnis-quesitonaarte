@@ -227,4 +227,3 @@ function handle_func_click () {
 
 hello_next()
 progress_from_ubroke()
-taste_next()
