@@ -8,10 +8,10 @@ let current_page = pages.HELLO;
 
 const progress = document.getElementById("progress");
 const select_progress = document.getElementById("select_progress");
-select_progress.style.left = "0px";
 const progress_items = document.getElementsByClassName("progress_item");
 const title_texts = document.getElementsByClassName("title_text");
 const title = document.getElementById("title");
+const carousel_1_figure = document.getElementById("carousel_inner").children[1];
 
 const carousel_inner = document.getElementById("carousel_inner");
 let carousel_taste = 1;
@@ -55,12 +55,11 @@ function tick() {
     }
 
     if (current_page == pages.TASTE) {
-        const carousel_space = window.innerWidth*0.8
-
-        const total_offset = mouse.offset_x + mouse.past_offset_x;
+        const carousel_space = carousel_1_figure.clientWidth;
+        const remaining_space = window.innerWidth*0.8 - carousel_1_figure.clientWidth
+        // const total_offset = mouse.offset_x + mouse.past_offset_x;
         
-
-        carousel_inner.style.left = `-${carousel_space * carousel_taste}px`;
+        carousel_inner.style.left = `${-carousel_space * carousel_taste + remaining_space/2}px`;
     }
 
     requestAnimationFrame(tick)
@@ -98,8 +97,7 @@ function hello_next () {
 
     // REVERT THIS WHEN YOU SAY THANK YOU
     const height = progress.clientHeight/2 + 5;
-    select_progress.style.height = `${height}px`;
-    select_progress.style.width = "30px";
+    select_progress.classList.toggle("secret_revealed");
 
     progress.style.height = "20vw";
     progress.style.padding = "5vw";
@@ -184,17 +182,18 @@ function swtich_taste() {
     }
 }
 
-document.getElementById("taste_next").onclick = taste_next();
+document.getElementById("taste_next").onclick = taste_next;
 function taste_next () {
     title_texts[current_page].classList.remove("active_title")
     current_page++
     title_texts[current_page].classList.add("active_title")
-    title.classList.remove("ubroke");
-    title.classList.add("taste");
+    title.classList.remove("taste");
+    title.classList.add("calcfunc");
 
-    title.style.left = "200vw";
-    main.style.left = "-200vw";
+    document.getElementById("title_calcfunc_offset").classList.toggle("active");
 
+    title.style.left = "300vw";
+    main.style.left = "-300vw";
 }
 
 hello_next()

@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="hello.css">
         <link rel="stylesheet" href="ubroke.css">
         <link rel="stylesheet" href="taste.css">
+        <link rel="stylesheet" href="calcfunc.css">
     </head>
     <body>
         <div id="progress">
@@ -15,7 +16,7 @@
             <div class="progress_item depth">Hello</div>
             <div class="progress_item" style="background-color: none;" id="secret_item">
                 <div id="veil" class="depth" style="position: absolute; flex: 1">Stuff</div>
-                
+
                 <div class="secret_progress depth"></div> <!-- would you buy for 200k -->
                 <div class="secret_progress depth"></div> <!-- black, yellow, or white -->
                 <div class="secret_progress depth"></div> <!-- What do you expect from a calculator -->
@@ -29,11 +30,13 @@
         <main id="main">
             <div id="title">
                 <div id="title_hello_offset" class="title_offset"><h2>Hi, This Is a</h2></div>
+                <div id="title_calcfunc_offset" class="title_offset"><h2>What</h2></div>
                 
                 <div style="position: relative">
                     <h1 class="title_text active_title" id="title_hello">Calcis</h1>
                     <h1 class="title_text" id="title_ubroke" >u broke?</h1>
                     <h1 class="title_text" id="title_taste">Tastefully</h1>
+                    <h1 class="title_text" id="title_calcfunc">Functions</h1>
                 </div>
             </div>
 
@@ -72,7 +75,7 @@
             </section>
 
             <section id="taste" class="main_section">
-                <h1 style="visibility: hidden; font-size: min(15vh, 15vw);">u broke?</h1>
+                <h1 style="visibility: hidden; font-size: min(10vh, 15vw);">u broke?</h1>
                 <h2>In which color do you prefer?</h2>
 
                 <div id="carousel_of_taste">
@@ -82,15 +85,52 @@
                         <figure> <img src="color_white.png"> </figure>
                     </div>
 
-                    <button class="carousel_buttons" id="carousel_left"><</button>
-                    <button class="carousel_buttons" id="carousel_right">></button>
+                    <div class="carousel_gradient" id="gradient_left"><button class="carousel_buttons" id="carousel_left"><</button></div>
+                    <div class="carousel_gradient" id="gradient_right"><button class="carousel_buttons" id="carousel_right">></button></div>
                 </div>
 
                 <button class="next" id="taste_next">Yellow!</button>
             </section>
 
-            <section id="calc_func" class="main_section">
-                
+            <section id="calcfunc" class="main_section">
+                <div style = "visibility: hidden;">
+                    <h2>What</h2>
+                    <h1>Functions</h1>
+                </div>
+
+                <h2>Do you need?</h2>
+
+                <div id="func_grid">
+                    <figure>
+                        <img src="func_consts.png">
+                        <figcaption>Constants</figcaption>
+                    </figure>
+                    
+                    <figure>
+                        <img src="func_graph.png">
+                        <figcaption>Graphing</figcaption>
+                    </figure>
+                    
+                    <figure>
+                        <img src="func_integral.png">
+                        <figcaption>Integrals</figcaption>
+                    </figure>
+                    
+                    <figure>
+                        <img src="func_regress.png">
+                        <figcaption>Regression</figcaption>
+                    </figure>
+                    
+                    <figure>
+                        <img src="func_sigma.png">
+                        <figcaption>Sigma</figcaption>
+                    </figure>
+                    
+                    <figure>
+                        <img src="func_turing.png">
+                        <figcaption>Turing<br>complete</figcaption>
+                    </figure>
+                </div>
             </section>
         </main>
 

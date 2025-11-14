@@ -9,9 +9,7 @@
 #title_ubroke { padding: 10vw; padding-top: 0px;}
 #title.ubroke h1{ font-size: min(15vh, 15vw); }
 
-#ubroke h2 {
-    font-size: min(5vh, 5vw);
-}
+#ubroke h2 { font-size: min(5vh, 5vw); }
 
 #ubroke label {
     margin-top: 5vh;

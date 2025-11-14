@@ -8,13 +8,14 @@
 }
 
 #title_taste { padding: 10vw; padding-top: 0px;}
-#title.taste h1{ font-size: min(15vh, 15vw); text-align: center;}
+#title.taste h1{ font-size: min(10vh, 15vw); text-align: center;}
 #taste h2 { font-size: min(5vh, 5vw); }
 
 #carousel_of_taste {
     position: relative;
     width: 100%;
-    height: 105vw;
+    height: min(50vh, 80vw);
+    overflow: hidden;
     
     display: flex;
     justify-content: space-between;
@@ -34,7 +35,7 @@
 
 #carousel_inner figure {
     display: inline;
-    width: 80vw;
+    width: min(50vw, 50vh);
     height: 100%;
     margin: 0px;
     text-align: center;
@@ -45,6 +46,18 @@
     width: 100%;
     object-fit: contain;
 }
+
+.carousel_gradient {
+    background: #00000000;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+}
+
+#gradient_left { background: linear-gradient(90deg,rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(0, 0, 0, 0) 100%); }
+#gradient_right {background: linear-gradient(90deg,rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 100%); }
 
 .carousel_buttons {
     background-color: rgba(240, 240, 240, 0.5);

@@ -75,7 +75,7 @@ main {
 .progress_item {
     position: relative;
     background-color: var(--mid);
-    height: 15vw;
+    height: max(50%, 7vh);
     aspect-ratio: 1/1;
     border-radius: 10vw;
     overflow: hidden;
@@ -84,6 +84,8 @@ main {
     align-items: center;
     z-index: 4;
     transition: 0.5s;
+
+    font-size: min(3vw, 4vh);
 }
 
 #select_progress {
