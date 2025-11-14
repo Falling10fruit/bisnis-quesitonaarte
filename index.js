@@ -6,6 +6,7 @@ const pages = {
 
 let current_page = pages.HELLO;
 
+const progress = document.getElementById("progress");
 const select_progress = document.getElementById("select_progress");
 select_progress.style.left = "0px";
 const progress_items = document.getElementsByClassName("progress_item");
@@ -96,11 +97,14 @@ function hello_next () {
     document.getElementById("veil").style.filter =  "opacity(0)";
 
     // REVERT THIS WHEN YOU SAY THANK YOU
-    const height = window.innerHeight * 0.12 + 5;
+    const height = progress.clientHeight/2 + 5;
     select_progress.style.height = `${height}px`;
     select_progress.style.width = "30px";
 
-    document.getElementById("progress").style.padding = "5vw";
+    progress.style.height = "20vw";
+    progress.style.padding = "5vw";
+    progress.style.paddingTop = "0vw";
+    progress.style.paddingBottom = "0vw";
     
     title.style.fontSize = "min(10vh, 10vw)";
     title.style.padding = ""
@@ -113,7 +117,7 @@ document.getElementById("calc_card").onclick = () => {
     document.getElementById("calc_card_inner").style.transform = "rotateY(180deg)"
     document.getElementById("ubroke_button_container").style.maxHeight = "100px";
 
-    document.getElementById("next_ubroke").style.padding = "20px";
+    document.getElementById("next_ubroke").style.padding = "3vw";
     document.getElementById("next_ubroke").style.marginTop = "10px";
     document.getElementById("next_ubroke").style.maxHeight = "100px";
 }
@@ -180,8 +184,17 @@ function swtich_taste() {
     }
 }
 
+document.getElementById("taste_next").onclick = taste_next();
 function taste_next () {
-    
+    title_texts[current_page].classList.remove("active_title")
+    current_page++
+    title_texts[current_page].classList.add("active_title")
+    title.classList.remove("ubroke");
+    title.classList.add("taste");
+
+    title.style.left = "200vw";
+    main.style.left = "-200vw";
+
 }
 
 hello_next()

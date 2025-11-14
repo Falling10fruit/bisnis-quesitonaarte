@@ -9,6 +9,7 @@
 
 #title_taste { padding: 10vw; padding-top: 0px;}
 #title.taste h1{ font-size: min(15vh, 15vw); text-align: center;}
+#taste h2 { font-size: min(5vh, 5vw); }
 
 #carousel_of_taste {
     position: relative;

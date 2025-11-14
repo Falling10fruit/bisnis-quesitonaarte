@@ -75,9 +75,10 @@ main {
 .progress_item {
     position: relative;
     background-color: var(--mid);
-    height: 45%;
+    height: 15vw;
     aspect-ratio: 1/1;
-    border-radius: 100%;
+    border-radius: 10vw;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,8 +98,9 @@ main {
     transition: 0.3s cubic-bezier(.47,1.64,.41,.8);
 }
 
-h1, h2, p {
-    margin: 0px;
+h1, h2, p { margin: 0px; }
+h2 {
+    font-size: min(7vw, 7vh);
 }
 
 #title {
@@ -139,7 +141,7 @@ h1, h2, p {
     background-color: var(--front);
     border-radius: 40px;
     border: none;
-    padding: 20px;
+    padding: 3vw;
 }
 
 .warning {
