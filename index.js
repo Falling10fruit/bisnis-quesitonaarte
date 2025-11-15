@@ -239,7 +239,15 @@ function go_from_calcfunc () {
     main.style.left = "-400vw";
 }
 
+const video_container = document.getElementById("video_container");
+const videoad = video_container.children[0];
+console.log(videoad.clientHeight)
+videoad.onload = () => {
+    console.log("videoad")
+    video_container.style.height = `${videoad.clientHeight}px`; }
+
 name_input.value = "Johhny"
 hello_next();
-// progress_from_ubroke();
-// taste_next();
+progress_from_ubroke();
+taste_next();
+go_from_calcfunc();
