@@ -55,8 +55,8 @@ function tick() {
     }
 
     if (current_page == pages.TASTE) {
-        const carousel_space = carousel_1_figure.clientWidth;
-        const remaining_space = window.innerWidth*0.8 - carousel_1_figure.clientWidth
+        const carousel_space = carousel_1_figure.clientWidth + window.innerWidth * 0.07;
+        const remaining_space = window.innerWidth*0.8 - carousel_1_figure.clientWidth;
         // const total_offset = mouse.offset_x + mouse.past_offset_x;
         
         carousel_inner.style.left = `${-carousel_space * carousel_taste + remaining_space/2}px`;
@@ -225,5 +225,21 @@ function handle_func_click () {
     }
 }
 
-hello_next()
-progress_from_ubroke()
+func_next.onclick = go_from_calcfunc;
+function go_from_calcfunc () {
+    title_texts[current_page].classList.remove("active_title")
+    current_page++
+    title_texts[current_page].classList.add("active_title")
+    title.classList.remove("calcfunc");
+    title.classList.add("videoad");
+
+    document.getElementById("title_calcfunc_offset").classList.toggle("active");
+
+    title.style.left = "400vw";
+    main.style.left = "-400vw";
+}
+
+name_input.value = "Johhny"
+hello_next();
+// progress_from_ubroke();
+// taste_next();

@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="ubroke.css">
         <link rel="stylesheet" href="taste.css">
         <link rel="stylesheet" href="calcfunc.css">
+        <link rel="stylesheet" href="videoad.css">
     </head>
     <body>
         <div id="progress">
@@ -20,7 +21,6 @@
                 <div class="secret_progress depth"></div> <!-- would you buy for 200k -->
                 <div class="secret_progress depth"></div> <!-- black, yellow, or white -->
                 <div class="secret_progress depth"></div> <!-- What do you expect from a calculator -->
-                <div class="secret_progress depth"></div> <!-- does this ad work-->
                 <div class="secret_progress depth"></div> <!-- Do you like this video better? -->
             </div>
 
@@ -32,11 +32,12 @@
                 <div id="title_hello_offset" class="title_offset"><h2>Hi, This Is a</h2></div>
                 <div id="title_calcfunc_offset" class="title_offset"><h2>What</h2></div>
                 
-                <div style="position: relative">
+                <div style="position: relative" id="title_container">
                     <h1 class="title_text active_title" id="title_hello">Calcis</h1>
                     <h1 class="title_text" id="title_ubroke" >u broke?</h1>
                     <h1 class="title_text" id="title_taste">Tastefully</h1>
                     <h1 class="title_text" id="title_calcfunc">Functions</h1>
+                    <h1 class="title_text" id="title_calcfunc">Video Good?</h1>
                 </div>
             </div>
 
@@ -54,8 +55,8 @@
             </section>
 
             <section id="ubroke" class="main_section">
-                <h1 style="visibility: hidden; font-size: min(15vh, 15vw);">u broke?</h1>
-                <h2>Would you buy this calculator for R.p. 200.000?</h2>
+                <h1 style="visibility: hidden; font-size: min(15vh, 11vw);">u broke?</h1>
+                <h2>Would you buy this calculator for <br> R.p. 200.000?</h2>
 
                 <div id="calc_card">
                     <div id="calc_card_inner">
@@ -133,6 +134,14 @@
                 </div>
 
                 <button class="next" id="func_next">I don't need anything</button>
+            </section>
+
+            <section id="videoad" class="main_section">
+                <h1 style="font-size: min(10vw, 10vh); visibility: hidden">Video good?</h1>
+
+                <video>
+                    <source src="Calculator.mp4" type="video/mp4">
+                </video>
             </section>
         </main>
 

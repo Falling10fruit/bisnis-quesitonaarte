@@ -1,0 +1,15 @@
+#videoad {
+    padding: 10vw;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+#title_videoad { padding: 20vw; padding-top: 0px;}
+#title.videoad h1{ font-size: min(10vh, 10vw); text-align: center; width: 100%}
+
+#videoad video {
+    width: 60vw;
+}
