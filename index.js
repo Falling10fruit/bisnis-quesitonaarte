@@ -1,7 +1,10 @@
 const pages = {
     HELLO: 0,
     UBROKE: 1,
-    TASTE: 2
+    TASTE: 2,
+    CALCFUNC: 3,
+    VIDEOAD: 4,
+    THANKS: 5
 }
 
 let current_page = pages.HELLO;
@@ -20,9 +23,9 @@ const mouse = {x: 0, y: 0, down: false, past_x: 0, past_y: 0, offset_x: 0, offse
 window.onmousemove = (e) => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
-
+    
     console.log(mouse.down)
-
+    
     if (mouse.down) {
         mouse.offset_x = mouse.x - mouse.past_x;
         mouse.offset_y = mouse.y - mouse.past_y;
@@ -39,6 +42,37 @@ window.onmouseup = () => {
     mouse.past_offset_y = mouse.offset_y;
 }
 
+let stages = {
+    awaiting: -1,
+    blackout: 0,
+    playing: 1,
+    relive: 2,
+}
+
+let video_stage = stages.awaiting;
+const growing_overlay = document.createElement("div");
+growing_overlay.style.position = "fixed";
+growing_overlay.style.zIndex = 7;
+const video_overlay = document.getElementById("video_overlay");
+const growing_overlay_dims = {
+    left: video_overlay.getBoundingClientRect().x,
+    top: video_overlay.getBoundingClientRect().top- Math.min(window.innerHeight*0.05, window.innerHeight*0.05),
+    width: video_overlay.clientWidth,
+    height: video_overlay.clientHeight,
+    alpha: 0,
+}
+const update_overlay = () => {
+    growing_overlay.style.top = `${growing_overlay_dims.top}px`;
+    growing_overlay.style.left = `${growing_overlay_dims.left}px`;
+    growing_overlay.style.width = `${growing_overlay_dims.width}px`;
+    growing_overlay.style.height = `${growing_overlay_dims.height}px`;
+    growing_overlay.style.backgroundColor = `rgba(0, 0, 0, ${growing_overlay_dims.alpha})`;
+}
+update_overlay()
+document.body.appendChild(growing_overlay);
+const actual_video = document.getElementById("actual_video");
+const video_container = document.getElementById("video_container");
+
 tick()
 
 function tick() {
@@ -47,20 +81,51 @@ function tick() {
         const mid_x = hello_item.getBoundingClientRect().x + hello_item.clientWidth/2;
         select_progress.style.left = `${mid_x - select_progress.clientWidth/2}px`;
     }
-    
-    if (current_page > 0) {
+
+    if (current_page > 0 && current_page != pages.THANKS) {
         const hello_item = progress_items[1].children[current_page];
         const mid_x = hello_item.getBoundingClientRect().x + hello_item.clientWidth/2;
         select_progress.style.left = `${mid_x - select_progress.clientWidth/2}px`;
     }
-
+    
+    if (current_page == pages.THANKS) {
+        const hello_item = progress_items[2];
+        const mid_x = hello_item.getBoundingClientRect().x + hello_item.clientWidth/2;
+        select_progress.style.left = `${mid_x - select_progress.clientWidth/2}px`;
+    }
+    
     if (current_page == pages.TASTE) {
         const carousel_space = carousel_1_figure.clientWidth + window.innerWidth * 0.07;
         const remaining_space = window.innerWidth*0.8 - carousel_1_figure.clientWidth;
         // const total_offset = mouse.offset_x + mouse.past_offset_x;
-        
+
         carousel_inner.style.left = `${-carousel_space * carousel_taste + remaining_space/2}px`;
     }
+
+    if (video_stage == stages.awaiting) {
+        growing_overlay_dims.left = video_overlay.getBoundingClientRect().x;
+        console.log(video_overlay.getBoundingClientRect().x)
+
+    }
+
+    if (video_stage == stages.blackout) {
+        if (growing_overlay_dims.top < 0.01 && growing_overlay_dims.top < 0.01 && growing_overlay_dims.alpha > 0.99) {
+            video_stage = stages.playing;
+            actual_video.style.filter = "opacity(1)";
+            actual_video.play();
+
+            document.getElementById("video_quiz").maxHeight = "100px";
+        }
+
+        growing_overlay_dims.top *= 0.5;
+        growing_overlay_dims.left *= 0.5;
+        growing_overlay_dims.width += (window.innerWidth - growing_overlay_dims.width)/2;
+        growing_overlay_dims.height += (window.innerHeight - growing_overlay_dims.height)/2;
+        growing_overlay_dims.alpha += (1 - growing_overlay_dims.alpha)/2;
+    }
+
+    update_overlay();
+    video_container.style.height = `${video_container.children[0].clientHeight}px`
 
     requestAnimationFrame(tick)
 }
@@ -81,7 +146,7 @@ function hello_next () {
     title_texts[current_page].classList.remove("active_title")
     current_page++
     title_texts[current_page].classList.add("active_title")
-    
+
     title.style.left = "100vw";
     title.classList.add("ubroke");
 
@@ -90,8 +155,8 @@ function hello_next () {
     title_hello_offset.style.margin = "0vh";
 
     // REVERT THIS WHEN YOU SAY THANK YOU
-    progress_items[1].classList.add("secret_revealed");
-    
+    progress_items[1].classList.toggle("secret_revealed");
+
     // REVERT THIS WHEN YOU SAY THANK YOU
     document.getElementById("veil").style.filter =  "opacity(0)";
 
@@ -103,7 +168,7 @@ function hello_next () {
     progress.style.padding = "5vw";
     progress.style.paddingTop = "0vw";
     progress.style.paddingBottom = "0vw";
-    
+
     title.style.fontSize = "min(10vh, 10vw)";
     title.style.padding = ""
 
@@ -239,12 +304,68 @@ function go_from_calcfunc () {
     main.style.left = "-400vw";
 }
 
-const video_container = document.getElementById("video_container");
 const videoad = video_container.children[0];
 console.log(videoad.clientHeight)
 videoad.onload = () => {
     console.log("videoad")
-    video_container.style.height = `${videoad.clientHeight}px`; }
+    video_container.style.height = `${videoad.clientHeight}px`;
+}
+growing_overlay.onclick = () => {
+    video_stage = stages.blackout;
+    growing_overlay.onclick = () => {};
+}
+
+actual_video.onended = () => {
+    video_stage = stages.relive;
+
+    setTimeout(() => {
+        actual_video.style.pointerEvents = "none";
+        actual_video.style.filter = "opacity(0)";
+        growing_overlay.style.filter = "opacity(0)";
+    }, 500);
+}
+const video_quiz = document.getElementById("video_quiz");
+const wrong_button = document.getElementById("wrong_video");
+const right_button = document.getElementById("video_next");
+let already_swapped = true;
+wrong_button.onclick = () => {
+    const gap = Math.min(window.innerWidth*0.02, window.innerHeight*0.02) * 2;
+    const wrong_translate = gap + right_button.clientWidth;
+    const right_translate = gap + wrong_button.clientWidth;
+
+    already_swapped = !already_swapped;
+
+    if (already_swapped) {
+        wrong_button.style.transform = `translateX(0px)`;
+        right_button.style.transform = `translateX(0px)`;
+        return
+    }
+
+    wrong_button.style.transform = `translateX(-${wrong_translate}px)`;
+    right_button.style.transform = `translateX(${right_translate}px)`;
+}
+
+right_button.onclick = fuckn_finally;
+
+function fuckn_finally() {
+    title_texts[current_page].classList.remove("active_title")
+    current_page++
+    title_texts[current_page].classList.add("active_title")
+    title.classList.remove("videoad");
+    title.classList.add("thanku");
+
+    // REVERT THIS WHEN YOU SAY THANK YOU
+    progress_items[1].classList.toggle("secret_revealed");
+
+    // REVERT THIS WHEN YOU SAY THANK YOU
+    document.getElementById("veil").style.filter =  "opacity(1)"; // reverted, now the stuff should reappear
+
+    // REVERT THIS WHEN YOU SAY THANK YOU
+    select_progress.classList.toggle("secret_revealed");
+
+    title.style.left = "500vw";
+    main.style.left = "-500vw";
+}
 
 name_input.value = "Johhny"
 hello_next();

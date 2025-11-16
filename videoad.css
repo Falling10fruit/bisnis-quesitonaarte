@@ -12,9 +12,8 @@
 
 #video_container {
     position: relative;
-    margin-top: min(5vw, 5vh);
     border-radius: 15px;
-    width: 80vw;
+    width: min(50vh, 80vw);
     height: min-content;
 }
 
@@ -50,4 +49,38 @@
     width: 70%;
     height: 70%;
     object-fit: cover;
+}
+
+#actual_video {
+    position: fixed;
+    top: 0px;
+    width: 100vh;
+    height: 100vh;
+    object-fit: contain;
+    z-index: 8;
+    filter: opacity(0);
+    transition: 0.2s;
+    pointer-events: none;
+}
+
+#video_quiz {
+    margin-top: min(1vh, 1vw);
+    background-color: var(--front);
+    border-radius: 7px;
+    max-height: 100px;
+    overflow: hidden;
+
+    display: flex;
+}
+
+#video_quiz button {
+    margin: min(2vh, 2vw);
+    padding: min(2vh, 2vw);
+    border-radius: 7px;
+    background-color: var(--mid);
+    border: none;
+    outline: none;
+    
+    transform: translateX(0px);
+    transition: 0.3s;
 }
