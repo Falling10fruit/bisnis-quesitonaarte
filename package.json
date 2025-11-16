@@ -1,0 +1,23 @@
+{
+  "name": "tugas-bisnis",
+  "version": "1.0.0",
+  "description": "ijustwannamake a fancy form",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Falling10fruit/bisnis-quesitonaarte.git"
+  },
+  "keywords": [
+    "tugas"
+  ],
+  "author": "Falling10fruit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Falling10fruit/bisnis-quesitonaarte/issues"
+  },
+  "homepage": "https://github.com/Falling10fruit/bisnis-quesitonaarte#readme"
+}
