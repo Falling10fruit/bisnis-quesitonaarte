@@ -326,11 +326,14 @@ actual_video.onended = () => {
         growing_overlay.style.pointerEvents = "none";
     }, 500);
 }
+
+let videoad_good = true;
 const video_quiz = document.getElementById("video_quiz");
 const wrong_button = document.getElementById("wrong_video");
 const right_button = document.getElementById("video_next");
 let already_swapped = true;
 wrong_button.onclick = () => {
+    videoad_good = false;
     // console.log("already_swapped", already_swapped)
 
     const gap = Math.min(window.innerWidth*0.02, window.innerHeight*0.02) * 2;
@@ -369,6 +372,8 @@ function fuckn_finally() {
 
     title.style.left = "500vw";
     main.style.left = "-500vw";
+
+    upload_to_database();
 }
 
 const no_lol = document.getElementById("no_lol");
@@ -409,6 +414,33 @@ if (localStorage.getItem("data") == null) {
     }
     data.push(data_to_insert);
     localStorage.setItem("data", data);
+
+async function upload_to_database() {
+    // const { name, imagead, constants, graph, integrals, regression, sigma, turing, color, videoad} = JSON.parse(request.body);
+
+    const body = JSON.stringify({
+        name: name_input,
+        imagead: is_imagead_good,
+        constants: wanted_functions.constants,
+        graph: wanted_functions.graphing,
+        integrals: wanted_functions.integrals,
+        regression: wanted_functions.regression,
+        sigma: wanted_functions.sigma,
+        turing: wanted_functions.turing,
+        color: color,
+        videoad: videoad_good
+    });
+
+    const res = await fetch("/.netlify/functions/upload_to_database", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: body
+    });
+    const confirm = await res.json();
+    console.log(confirm);
+}
 
 name_input.value = "Johhny"
 hello_next();
