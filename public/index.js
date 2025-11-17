@@ -417,6 +417,21 @@ if (localStorage.getItem("data") == null) {
 
 async function upload_to_database() {
     // const { name, imagead, constants, graph, integrals, regression, sigma, turing, color, videoad} = JSON.parse(request.body);
+    
+    let color;
+    switch (carousel_taste) {
+        case 0:
+            color = "black";
+            break;
+        case 1:
+            color = "yellow";
+            break;
+        case 2:
+            color = "white";
+            break;
+        default:
+            color = "black";
+    }
 
     const body = JSON.stringify({
         name: name_input,
