@@ -24,8 +24,6 @@ window.onmousemove = (e) => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
     
-    console.log(mouse.down)
-    
     if (mouse.down) {
         mouse.offset_x = mouse.x - mouse.past_x;
         mouse.offset_y = mouse.y - mouse.past_y;
@@ -104,8 +102,6 @@ function tick() {
 
     if (video_stage == stages.awaiting) {
         growing_overlay_dims.left = video_overlay.getBoundingClientRect().x;
-        console.log(video_overlay.getBoundingClientRect().x)
-
     }
 
     if (video_stage == stages.blackout) {
@@ -373,7 +369,7 @@ function fuckn_finally() {
     title.style.left = "500vw";
     main.style.left = "-500vw";
 
-    upload_to_database();
+    update_local_storage();
 }
 
 const no_lol = document.getElementById("no_lol");
@@ -391,7 +387,7 @@ no_lol.onclick = () => {
 if (localStorage.getItem("data") == null) {
     localStorage.setItem("data", "[]");
 }
-
+function update_local_storage() {
     let data = JSON.parse(localStorage.getItem("data"));
     let color;
     switch (carousel_taste) {
@@ -414,8 +410,14 @@ if (localStorage.getItem("data") == null) {
         calcfunc: wanted_functions,
         videoad_better: videoad_good
     }
+
+    console.log(data_to_insert)
     data.push(data_to_insert);
-    localStorage.setItem("data", data);
+
+    console.log(data)
+
+    localStorage.setItem("data", JSON.stringify(data));
+}
 
 async function upload_to_database() {
     // const { name, imagead, constants, graph, integrals, regression, sigma, turing, color, videoad} = JSON.parse(request.body);
