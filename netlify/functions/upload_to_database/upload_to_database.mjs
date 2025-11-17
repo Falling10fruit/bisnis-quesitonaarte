@@ -8,7 +8,7 @@ export async function handler(request, context) {
 
     // Parameterized insert using tagged template to avoid injection issues
     const result = await sql`
-      INSERT INTO Bisnis_data (name, imagegood, constants, graphing, integrals, regression, sigma, turing, color, videoad)
+      INSERT INTO bisnis_data (name, imagegood, constants, graphing, integrals, regression, sigma, turing, color, videoad)
       VALUES (
         ${name}, ${imagead}, ${constants}, ${graph}, ${integrals}, ${regression}, ${sigma}, ${turing}, ${color}, ${videoad}
       );

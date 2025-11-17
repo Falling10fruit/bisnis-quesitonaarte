@@ -392,7 +392,7 @@ if (localStorage.getItem("data") == null) {
     localStorage.setItem("data", "[]");
 }
 
-    let data = JSON.parse(localSotage.getItem("data"));
+    let data = JSON.parse(localStorage.getItem("data"));
     let color;
     switch (carousel_taste) {
         case 0:
@@ -457,8 +457,8 @@ async function upload_to_database() {
     console.log(confirm);
 }
 
-name_input.value = "Johhny"
-hello_next();
-progress_from_ubroke();
-taste_next();
-go_from_calcfunc();
+// name_input.value = "Johhny"
+// hello_next();
+// progress_from_ubroke();
+// taste_next();
+// go_from_calcfunc();
