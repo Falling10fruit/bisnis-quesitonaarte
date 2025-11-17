@@ -410,7 +410,9 @@ if (localStorage.getItem("data") == null) {
     const data_to_insert = {
         name: name_input.value,
         image_good: is_imagead_good,
-        color: color
+        color: color,
+        calcfunc: wanted_functions,
+        videoad_better: videoad_good
     }
     data.push(data_to_insert);
     localStorage.setItem("data", data);
