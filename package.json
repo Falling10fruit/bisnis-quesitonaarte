@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Falling10fruit/bisnis-quesitonaarte/issues"
   },
-  "homepage": "https://github.com/Falling10fruit/bisnis-quesitonaarte#readme"
+  "homepage": "https://github.com/Falling10fruit/bisnis-quesitonaarte#readme",
+  "dependencies": {
+    "@netlify/neon": "^0.1.0"
+  }
 }

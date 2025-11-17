@@ -85,7 +85,7 @@ main {
     z-index: 4;
     transition: 0.5s;
 
-    font-size: min(3vw, 4vh);
+    font-size: min(2vw, 4vh);
 }
 
 #select_progress {
