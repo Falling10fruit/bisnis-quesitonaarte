@@ -66,7 +66,7 @@ main {
     display: flex;
     justify-content: center;
     gap: 25px;
-    height: min(15vh, 15vw);
+    height: min(15vh, 20vw);
     align-items: center;
     padding: 0vw;
     transition: 0.5s;
@@ -75,7 +75,7 @@ main {
 .progress_item {
     position: relative;
     background-color: var(--mid);
-    height: max(50%, 7vh);
+    height: min(7vh, 7vh);
     aspect-ratio: 1/1;
     border-radius: 10vw;
     overflow: hidden;
@@ -85,7 +85,7 @@ main {
     z-index: 4;
     transition: 0.5s;
 
-    font-size: min(2vw, 4vh);
+    font-size: min(3vw, 4vh);
 }
 
 #select_progress {
