@@ -67,7 +67,7 @@
     margin-top: min(1vh, 1vw);
     background-color: var(--front);
     border-radius: 7px;
-    max-height: 100px;
+    max-height: 0px;
     overflow: hidden;
 
     display: flex;

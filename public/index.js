@@ -114,7 +114,7 @@ function tick() {
             actual_video.style.filter = "opacity(1)";
             actual_video.play();
 
-            document.getElementById("video_quiz").maxHeight = "100px";
+            document.getElementById("video_quiz").style.maxHeight = "100px";
         }
 
         growing_overlay_dims.top *= 0.5;
@@ -164,7 +164,6 @@ function hello_next () {
     const height = progress.clientHeight/2 + 5;
     select_progress.classList.toggle("secret_revealed");
 
-    progress.style.height = "20vw";
     progress.style.padding = "5vw";
     progress.style.paddingTop = "0vw";
     progress.style.paddingBottom = "0vw";
@@ -324,6 +323,7 @@ actual_video.onended = () => {
         actual_video.style.pointerEvents = "none";
         actual_video.style.filter = "opacity(0)";
         growing_overlay.style.filter = "opacity(0)";
+        growing_overlay.style.pointerEvents = "none";
     }, 500);
 }
 const video_quiz = document.getElementById("video_quiz");
@@ -331,6 +331,8 @@ const wrong_button = document.getElementById("wrong_video");
 const right_button = document.getElementById("video_next");
 let already_swapped = true;
 wrong_button.onclick = () => {
+    // console.log("already_swapped", already_swapped)
+
     const gap = Math.min(window.innerWidth*0.02, window.innerHeight*0.02) * 2;
     const wrong_translate = gap + right_button.clientWidth;
     const right_translate = gap + wrong_button.clientWidth;
