@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Falling10fruit/bisnis-quesitonaarte#readme",
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
     "@netlify/neon": "^0.1.0"
   }
 }

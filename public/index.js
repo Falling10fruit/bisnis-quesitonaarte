@@ -192,6 +192,7 @@ ubroke_button_container.onclick = () => {
     ubroke_button_container.classList.toggle("wrong")
 }
 
+let is_imagead_good = true;
 const next_ubroke = document.getElementById("next_ubroke")
 const ubroke_warn = document.getElementById("poster_warn");
 next_ubroke.onclick = () => {
@@ -207,6 +208,7 @@ next_ubroke.onclick = () => {
 }
 
 function fucku () {
+    is_imagead_good = false
     ubroke_warn.innerText = "screw you"
     setTimeout(progress_from_ubroke, 500);
 }
@@ -366,6 +368,45 @@ function fuckn_finally() {
     title.style.left = "500vw";
     main.style.left = "-500vw";
 }
+
+const no_lol = document.getElementById("no_lol");
+no_lol.onclick = () => {
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+
+    no_lol.innerText = "No you don't"
+    no_lol.onclick = () => {};
+}
+
+if (localStorage.getItem("data") == null) {
+    localStorage.setItem("data", "[]");
+}
+
+    let data = JSON.parse(localSotage.getItem("data"));
+    let color;
+    switch (carousel_taste) {
+        case 0:
+            color = "black";
+            break;
+        case 1:
+            color = "yellow";
+            break;
+        case 2:
+            color = "white";
+            break;
+        default:
+            color = "black";
+    }
+    const data_to_insert = {
+        name: name_input.value,
+        image_good: is_imagead_good,
+        color: color
+    }
+    data.push(data_to_insert);
+    localStorage.setItem("data", data);
 
 name_input.value = "Johhny"
 hello_next();
