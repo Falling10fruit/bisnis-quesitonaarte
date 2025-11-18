@@ -415,7 +415,7 @@ function update_local_storage() {
     data.push(data_to_insert);
 
     console.log(data)
-    document.getElementById("copy").onclick = navigator.clipboard.writeText(JSON.stringify(data));
+    document.getElementById("copy").onclick = () => { navigator.clipboard.writeText(JSON.stringify(data)) };
 
     localStorage.setItem("data", JSON.stringify(data));
 }
